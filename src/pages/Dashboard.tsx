@@ -2,13 +2,20 @@ import React, { useState } from "react";
 import JobPostChart from "../components/dashboard/JobPostChart";
 import RevenueChart from "../components/dashboard/RevenueChart";
 import DashboardCard from "../components/dashboard/DashboardCard";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { CalendarDays } from "lucide-react";
 
 const Dashboard = () => {
   const [selectedCard, setSelectedCard] = useState(null); // State to track the selected card
 
+  const [startDate, setStartDate] = useState(new Date("2024-01-01"));
+  const [endDate, setEndDate] = useState(new Date("2024-12-31"));
+
   const handleCardClick = (index) => {
     setSelectedCard(index); // Set the clicked card as selected
   };
+  
 
   const cards = [
     {
@@ -69,16 +76,44 @@ const Dashboard = () => {
     },
   ];
 
+  const CustomInput = React.forwardRef(({ value, onClick, label }, ref) => (
+    <div
+      className="flex items-center gap-2 px-4 py-2 border rounded-lg bg-white cursor-pointer"
+      onClick={onClick}
+      ref={ref}
+    >
+      <CalendarDays className="text-gray-500" />
+      <span className="text-sm text-gray-700">{value || label}</span>
+    </div>
+  ));
+
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Dashboard Overview</h1>
-        <div className="flex gap-2">
-          <select className="px-4 py-2 border rounded-lg bg-white">
-            <option>Last 7 days</option>
-            <option>Last 30 days</option>
-            <option>Last 90 days</option>
-          </select>
+        <h1 className="text-2xl font-bold pl-2 border-l-[12px] border-[#FED408]">Dashboard Overview</h1>
+        <div className="flex items-center gap-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Start Date
+            </label>
+            <DatePicker
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              dateFormat="d MMMM, yyyy"
+              customInput={<CustomInput label="Select Start Date" />}
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              End Date
+            </label>
+            <DatePicker
+              selected={endDate}
+              onChange={(date) => setEndDate(date)}
+              dateFormat="d MMMM, yyyy"
+              customInput={<CustomInput label="Select End Date" />}
+            />
+          </div>
         </div>
       </div>
 
@@ -88,7 +123,9 @@ const Dashboard = () => {
             key={index}
             onClick={() => handleCardClick(index)}
             className={`cursor-pointer rounded-lg ${
-              selectedCard === index ? "border-2 border-black" : "border border-gray-200"
+              selectedCard === index
+                ? "border-2 border-black"
+                : "border border-gray-200"
             }`}
           >
             <DashboardCard

@@ -89,9 +89,9 @@ const DashboardCard: React.FC<DashboardCardProps> = ({
       </div>
       <div className="flex justify-between items-center">
         <p className="text-2xl font-semibold text-gray-900 mt-1">{value}</p>
-        <div className="flex">
+        <div className="flex items-center">
           <p className="text-sm font-medium text-gray-600">Detailed View</p>
-          <ArrowRight />
+          <ArrowRight className="w-4 h-4"/>
         </div>
       </div>
     </div>
