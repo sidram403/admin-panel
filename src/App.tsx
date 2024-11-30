@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import Dashboard from './pages/Dashboard';
-import Jobs from './pages/Jobs';
+import JobManagement from './pages/JobManagement';
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Dashboard />} />
-          <Route path="jobs" element={<Jobs />} />
+          <Route path="job-management" element={<JobManagement />} />
           <Route path="employers" element={<div className="p-6">Employers Page</div>} />
           <Route path="payments" element={<div className="p-6">Payments Page</div>} />
           <Route path="support" element={<div className="p-6">Support Page</div>} />

@@ -11,7 +11,7 @@ import {
 
 const menuItems = [
   { icon: LayoutDashboard, text: 'Dashboard', path: '/' },
-  { icon: Users, text: 'Job Management', path: '/jobs' },
+  { icon: Users, text: 'Job Management', path: '/job-management' },
   { icon: Briefcase, text: 'Employers', path: '/employers' },
   { icon: CreditCard, text: 'Payments', path: '/payments' },
   { icon: MessageSquareMore, text: 'Support', path: '/support' },
@@ -22,7 +22,7 @@ const Sidebar = () => {
     <div className="h-screen w-64 bg-white border-r border-gray-200 flex flex-col">
       <div className="p-4 border-b border-gray-200">
         <div className="flex items-center gap-2">
-          <img className='w-8 h-8' src="../../../public/assets/logo.png" alt="logo" />
+          <img className='w-8 h-8' src="./assets/logo.png" alt="logo" />
           {/* <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
             <span className="text-white font-bold">WL</span>
           </div>
