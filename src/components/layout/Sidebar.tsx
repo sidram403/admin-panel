@@ -21,8 +21,8 @@ const Sidebar = () => {
   return (
     <div className="h-screen w-64 bg-white border-r border-gray-200 flex flex-col">
       <div className="p-4 border-b border-gray-200">
-        <div className="flex items-center gap-2">
-          <img className='w-8 h-8' src="../../../public/assets/logo.png" alt="logo" />
+        <div className="flex items-center justify-center gap-2">
+          <img className='w-20 h-12 ' src="/assets/logo.png" alt="logo" />
           {/* <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
             <span className="text-white font-bold">WL</span>
           </div>

@@ -28,12 +28,12 @@ const DashboardCard: React.FC<DashboardCardProps> = ({
   const formattedData = chartData.map((value, index) => ({ index, value }));
 
   return (
-    <div className="bg-white border border-gray-200 shadow-sm rounded-lg p-4 flex flex-col justify-between">
-      <div className="flex justify-between items-start">
+    <div className="bg-white shadow-sm rounded-lg p-4 flex flex-col justify-between">
+      <div className="flex justify-between items-center">
         <div>
           <h3 className="text-sm font-medium text-gray-600">{title}</h3>
         </div>
-        <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
+        <div className="w-10 h-10 flex items-center justify-center">
           {icon}
         </div>
       </div>
@@ -87,7 +87,7 @@ const DashboardCard: React.FC<DashboardCardProps> = ({
           </AreaChart>
         </ResponsiveContainer>
       </div>
-      <div className="flex justify-between items-start">
+      <div className="flex justify-between items-center">
         <p className="text-2xl font-semibold text-gray-900 mt-1">{value}</p>
         <div className="flex">
           <p className="text-sm font-medium text-gray-600">Detailed View</p>
