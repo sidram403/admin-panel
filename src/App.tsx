@@ -6,6 +6,7 @@ import JobManagement from './pages/JobManagement';
 import EmployerDetailPage from './pages/employers/EmployerDetailPage';
 import CandidatesTable from './pages/employers/CandidatesTable';
 import JobDetailsPage from './pages/jobManagemant/JobDetailsPage';
+import CandidateProfile from './pages/jobManagemant/CandidateProfile';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="checkpage" element={<EmployerDetailPage/>} />
           <Route path="candidate" element={<CandidatesTable/>} />
           <Route path="jobdetail" element={<JobDetailsPage/>} />
+          <Route path="candidate-profile" element={<CandidateProfile/>} />
 
 
 

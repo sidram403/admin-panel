@@ -88,7 +88,7 @@ const Dashboard = () => {
   ));
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 p-6">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold pl-2 border-l-[12px] border-[#FED408]">Dashboard Overview</h1>
         <div className="flex items-center gap-4">
