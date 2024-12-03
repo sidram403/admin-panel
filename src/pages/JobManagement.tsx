@@ -1,4 +1,4 @@
-import { Filter, Plus } from 'lucide-react'
+import { Filter, Info, Plus } from 'lucide-react'
 import { useState } from 'react'
 
 const JobManagement = () => {
@@ -71,38 +71,43 @@ const JobManagement = () => {
         </div>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
-          <div className="p-5 bg-white rounded-lg shadow">
+        <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8 rounded-lg" style={{ boxShadow: "2px 2px 4px 6px rgba(0, 0, 0, 0.1)" }}>
+          <div className="p-5 bg-white rounded-lg ">
             <h2 className="text-2xl font-bold text-green-500">12k</h2>
             <p className="text-sm text-gray-600">Total Active Jobs</p>
           </div>
-          <div className="p-5 bg-white rounded-lg shadow">
+          <div className="p-5 bg-white rounded-lg ">
             <h2 className="text-2xl font-bold text-orange-500">123</h2>
             <p className="text-sm text-gray-600">Upcoming Jobs</p>
           </div>
-          <div className="p-5 bg-white rounded-lg shadow">
+          <div className="p-5 bg-white rounded-lg ">
             <h2 className="text-2xl font-bold text-red-500">75</h2>
             <p className="text-sm text-gray-600">Cancelled Jobs</p>
           </div>
-          <div className="p-5 bg-white rounded-lg shadow">
+          <div className="p-5 bg-white rounded-lg ">
             <h2 className="text-2xl font-bold text-blue-500">86%</h2>
             <p className="text-sm text-gray-600">Average Attendance Rate</p>
           </div>
         </div>
 
         {/* Job Types Filter */}
-        <div className="flex gap-6 mb-6 text-sm">
+        <div className="flex gap-6 mb-6 text-sm bg-gray-200 justify-between items-center rounded-lg py-3 px-3">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+            <span className="w-1 h-6  bg-green-500 "></span>
             High Demand Jobs
+            <Info className='w-7 h-7 border rounded-full p-1' />
           </div>
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 bg-orange-500 rounded-full"></span>
+            <span className="w-1 h-6  bg-orange-500 "></span>
             Moderate Demand Jobs
+            <Info className='w-7 h-7 border rounded-full p-1' />
+
           </div>
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 bg-red-500 rounded-full"></span>
+            <span className="w-1 h-6  bg-red-500 "></span>
             High No Show Jobs
+            <Info className='w-7 h-7 border rounded-full p-1' />
+
           </div>
         </div>
 
