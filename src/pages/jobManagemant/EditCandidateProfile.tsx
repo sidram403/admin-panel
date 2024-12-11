@@ -15,13 +15,16 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { FaRegIdCard } from "react-icons/fa";
-import { MdOutlineDateRange , MdOutlineOutlinedFlag, MdOutlineVerifiedUser} from "react-icons/md";
+import {
+  MdOutlineDateRange,
+  MdOutlineOutlinedFlag,
+  MdOutlineVerifiedUser,
+} from "react-icons/md";
 import { TbGenderGenderfluid } from "react-icons/tb";
 import { CiUser } from "react-icons/ci";
 import { GoChecklist } from "react-icons/go";
 import { FiEdit3 } from "react-icons/fi";
 import { Link } from "react-router-dom";
-
 
 interface PersonalDetails {
   candidateId: string;
@@ -43,7 +46,7 @@ interface ProfileStats {
   workingHours: number;
 }
 
-export default function ProfileDashboard() {
+export default function EditCandidateProfile() {
   const [activeTab, setActiveTab] = useState("jobHistory");
 
   const [isOpen, setIsOpen] = useState(false);
@@ -97,7 +100,7 @@ export default function ProfileDashboard() {
       case "gender":
         return <TbGenderGenderfluid className="w-6 h-6 text-[#048BE1]" />;
       case "nric":
-        return <FaRegIdCard className="w-5 h-5 text-[#048BE1]" />; 
+        return <FaRegIdCard className="w-5 h-5 text-[#048BE1]" />;
       case "nationality":
         return <MdOutlineOutlinedFlag className="w-7 h-7 text-[#048BE1]" />;
       case "race":
@@ -129,53 +132,51 @@ export default function ProfileDashboard() {
             <button onClick={toggleMenu} className="p-4 rounded-full bg-white">
               <Settings className="w-6 h-6" />
             </button>
-            
           </div>
           {isOpen && (
-        <div className="absolute right-0 mt-2 w-48 top-14 bg-white border border-gray-300 rounded-lg shadow-lg z-50">
-          <ul className="py-2">
-            {/* Edit Candidate */}
-            <li>
-              <Link to='/edit-candidate-profile'>
-              <button className="flex items-center w-full px-4 py-2 text-sm text-[#000000] hover:bg-gray-100">
-                <FiEdit3 className="w-4 h-4 mr-2 text-gray-500" />
-                Edit Candidate
-              </button>
-              </Link>
-            </li>
-            {/* Block Candidate */}
-            <li>
-              <button className="flex items-center w-full px-4 py-2 text-sm text-[#941F15] hover:bg-red-100">
-                <Ban className="w-4 h-4 mr-2 text-red-500" />
-                Block Candidate
-              </button>
-            </li>
-          </ul>
-        </div>
-      )}
+            <div className="absolute right-0 mt-2 w-48 top-14 bg-white border border-gray-300 rounded-lg shadow-lg z-50">
+              <ul className="py-2">
+                {/* Block Candidate */}
+                <li>
+                  <button className="flex items-center w-full px-4 py-2 text-sm text-[#941F15] hover:bg-red-100">
+                    <Ban className="w-4 h-4 mr-2 text-red-500" />
+                    Block Candidate
+                  </button>
+                </li>
+              </ul>
+            </div>
+          )}
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 -mt-20">
         <div className="grid md:grid-cols-[320px_1fr] gap-6">
           {/* Profile Card */}
-          <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-200 z-10 pt-32">
-            <div className="flex flex-col items-center -mt-20 pb-6 border-b border-[#DDDDDD]">
-              <div className="relative">
+          <div className="bg-white rounded-3xl p-6 pt-28">
+            <div className="flex flex-col items-center  -mt-20 pb-6 border-b border-[#DDDDDD]">
+              <div className="relative flex items-center gap-4">
                 <img
                   src="./assets/teamm1.svg"
                   alt="Profile"
                   width={100}
                   height={100}
-                  className="rounded-full border-2 border-dotted border-black"
+                  className="rounded-full"
                 />
+                <p className="mt-8">ID : 24575</p>
               </div>
-              <h1 className="mt-4 text-xl font-semibold">Ethan Carter</h1>
-              <span className="px-6  py-1 bg-[#CEFFCF] text-[#049609] text-sm font-normal rounded-full mt-1">
-                Verified
-              </span>
+              <div className="flex items-center gap-2 ">
+                <h1 className=" text-xl font-semibold">Ethan Carter </h1>
+                <p>(male)</p>
+                <span className="px-6  py-1 bg-[#CEFFCF] text-[#049609] text-sm font-normal rounded-full mt-1">
+                  Verified
+                </span>
+              </div>
+
+              <p className="text-sm text-[#4C4C4C] font-medium mt-2 ">
+                Age : 35
+              </p>
               <p className="text-sm text-[#4C4C4C] font-medium mt-2">
-                Registered at: 21/09/2008, 09:30AM
+                DOB: 05/10/1888
               </p>
             </div>
 
@@ -191,9 +192,10 @@ export default function ProfileDashboard() {
 
                     {/* Label and Value */}
                     <div>
-                    <p className="text-[16px] font-medium leading-[24px] text-[#048BE1]">
-              {customLabels[key] || key.replace(/([A-Z])/g, " $1").trim()}
-            </p>
+                      <p className="text-[16px] font-medium leading-[24px] text-[#048BE1]">
+                        {customLabels[key] ||
+                          key.replace(/([A-Z])/g, " $1").trim()}
+                      </p>
                       <p className="text-[20px] leading-[30px] font-normal text-[#000000]">
                         {value}
                       </p>
@@ -289,8 +291,12 @@ const StatItem: React.FC<StatItemProps> = ({ icon: Icon, label, value }) => (
   <div className="py-6">
     <div className="flex items-center gap-6 text-gray-600 mb-6">
       <Icon className="w-[30px] h-[30px]" color="#000000" />
-      <span className="text-[20px] leading-[24px] text-[#000000] font-medium">{label}</span>
+      <span className="text-[20px] leading-[24px] text-[#000000] font-medium">
+        {label}
+      </span>
     </div>
-    <p className="text-[36px] font-normal leading-[43px] text-[#000000]">{value}</p>
+    <p className="text-[36px] font-normal leading-[43px] text-[#000000]">
+      {value}
+    </p>
   </div>
-)
+);

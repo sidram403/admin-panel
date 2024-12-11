@@ -10,6 +10,8 @@ import CandidateProfile from './pages/jobManagemant/CandidateProfile';
 import ModifyShifts from './pages/jobManagemant/modifyShifts';
 import EmployerTable from './pages/employers/Employers';
 import ActiveJobPosting from './pages/employers/ActiveJobPosting';
+import HustleHeroesList from './pages/hustleHeroes/HustleHeroesList';
+import EditCandidateProfile from './pages/jobManagemant/EditCandidateProfile';
 
 function App() {
   return (
@@ -18,7 +20,6 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Dashboard />} />
           <Route path="job-management" element={<JobManagement />} />
-          <Route path="hustle-heroes" element={<div className="p-6">Hustle Heroes Page</div>} />
 
           <Route path="payments" element={<div className="p-6">Payments Page</div>} />
           <Route path="support" element={<div className="p-6">Support Page</div>} />
@@ -28,11 +29,13 @@ function App() {
           <Route path="candidate" element={<CandidatesTable/>} />
           <Route path="jobdetail" element={<JobDetailsPage/>} />
           <Route path="candidate-profile" element={<CandidateProfile/>} />
+          <Route path="edit-candidate-profile" element={<EditCandidateProfile/>} />
           <Route path="modify-shifts" element={<ModifyShifts/>} />
 
           {/* employers pages */}
           <Route path="employers" element={<EmployerTable/>} />
           <Route path="active-job-posting" element={<ActiveJobPosting/>} />
+          <Route path="hustle-heroes" element={<HustleHeroesList/>} />
 
 
 
