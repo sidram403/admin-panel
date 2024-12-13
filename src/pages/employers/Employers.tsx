@@ -25,12 +25,8 @@ interface Employer {
 }
 
 const employers: Employer[] = Array(5).fill({
-  companyName: "RIGHT SERVICE PTE. LTD.",
+  companyName: ["/public/assets/company.png","RIGHT SERVICE PTE. LTD.", "SengKang, Singapore"],
   companyEmail: "rightservice123@gmail.com",
-  employerName: "John Tyler",
-  employerNumber: "+65 1234567895",
-  employerPosition: "Manager",
-  accountNumber: "0052312891",
   activeJobPostings: 20,
   outlets: 5,
   contractStartDate: "03/05/2003",
@@ -82,36 +78,12 @@ const EmployerTable: React.FC = () => {
                 <th className="p-2 whitespace-nowrap rounded-l-full">
                   Company Name
                 </th>
-                <th className="p-2 whitespace-nowrap">
-                  Company Email
-                </th>
-                <th className="p-2 whitespace-nowrap">
-                  Employer Name
-                </th>
-                <th className="p-2 whitespace-nowrap">
-                  Employer Number
-                </th>
-                <th className="p-2 whitespace-nowrap">
-                  Employer Position
-                </th>
-                <th className="p-2 whitespace-nowrap">
-                  Account Number
-                </th>
-                <th className="p-2 whitespace-nowrap">
-                  Active Job Postings
-                </th>
-                <th className="p-2 whitespace-nowrap">
-                  Outlets
-                </th>
-                <th className="p-2 whitespace-nowrap">
-                  Contract Start Date
-                </th>
-                <th className="p-2 whitespace-nowrap">
-                  Contract End Date
-                </th>
-                <th className="p-2 whitespace-nowrap">
-                  Verification Status
-                </th>
+                <th className="p-2 whitespace-nowrap">Company Email</th>
+                <th className="p-2 whitespace-nowrap">Active Job Postings</th>
+                <th className="p-2 whitespace-nowrap">Outlets</th>
+                <th className="p-2 whitespace-nowrap">Contract Start Date</th>
+                <th className="p-2 whitespace-nowrap">Contract End Date</th>
+                <th className="p-2 whitespace-nowrap">Verification Status</th>
                 <th className="p-2 whitespace-nowrap rounded-r-full">
                   Actions
                 </th>
@@ -120,14 +92,28 @@ const EmployerTable: React.FC = () => {
             <tbody>
               {employers.map((employer, index) => (
                 <tr key={index} className="text-center">
-                  {Object.values(employer).map((value, i) => (
+                  {Object.entries(employer).map(([key, value], i) => (
                     <td
                       key={i}
-                      className={`border border-gray-300 p-2 whitespace-nowrap overflow-hidden text-ellipsis truncate ${
+                      className={`border border-gray-300 p-2 whitespace-nowrap w-max overflow-hidden text-ellipsis truncate-2 ${
                         value === "Verified" ? "text-green-500" : "text-black"
                       }`}
                     >
-                      {value}
+                      {key === "companyName" && Array.isArray(value) ? (
+                        <div className="flex w-max gap-1 items-center align-middle">
+                          <img
+                            src={value[0]} 
+                            alt="Company Logo"
+                            className="w-8 h-8 mx-auto shadow-md"
+                          />
+                          <div className=" flex flex-col text-left">
+                          <p>{value[1]}</p>
+                          <p className="text-sm text-gray-400">{value[2]}</p>
+                          </div>
+                        </div>
+                      ) : (
+                        value
+                      )}
                     </td>
                   ))}
                   <td className="border border-gray-300 p-2">
