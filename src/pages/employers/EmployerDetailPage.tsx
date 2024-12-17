@@ -46,7 +46,7 @@ const EmployerDetailPage: React.FC = () => {
           </button>
         </div>
       </div>
-      <div className="flex gap-4 mb-4">
+      <div className="flex flex-col gap-4 mb-4">
         <div className="text-gray-500 flex gap-2">
           <Phone /> <p> (+65) 123 434 543 </p>
         </div>
