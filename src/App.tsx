@@ -7,6 +7,7 @@ import EmployerDetailPage from './pages/employers/EmployerDetailPage';
 import CandidatesTable from './pages/employers/CandidatesTable';
 import JobDetailsPage from './pages/jobManagemant/JobDetailsPage';
 import CandidateProfile from './pages/jobManagemant/CandidateProfile';
+import EmployeePayments from './pages/payments/EmployeePayments';
 
 function App() {
   return (
@@ -26,6 +27,10 @@ function App() {
           <Route path="candidate" element={<CandidatesTable/>} />
           <Route path="jobdetail" element={<JobDetailsPage/>} />
           <Route path="candidate-profile" element={<CandidateProfile/>} />
+
+{/* Payments */}
+          <Route path="employee-payments" element={<EmployeePayments/>} />
+
 
 
 
