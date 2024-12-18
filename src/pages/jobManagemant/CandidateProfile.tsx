@@ -12,16 +12,24 @@ import {
   CalendarCheck,
   CalendarX2,
   Ban,
+  Image,
+  RotateCcw,
 } from "lucide-react";
 import { useState } from "react";
 import { FaRegIdCard } from "react-icons/fa";
-import { MdOutlineDateRange , MdOutlineOutlinedFlag, MdOutlineVerifiedUser} from "react-icons/md";
+import {
+  MdOutlineDateRange,
+  MdOutlineOutlinedFlag,
+  MdOutlineVerifiedUser,
+} from "react-icons/md";
 import { TbGenderGenderfluid } from "react-icons/tb";
 import { CiUser } from "react-icons/ci";
 import { GoChecklist } from "react-icons/go";
 import { FiEdit3 } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { FaHandHoldingWater } from "react-icons/fa";
+import { TbUserHexagon } from "react-icons/tb";
 
+import { Link } from "react-router-dom";
 
 interface PersonalDetails {
   candidateId: string;
@@ -31,6 +39,22 @@ interface PersonalDetails {
   nric: string;
   nationality: string;
   race: string;
+  paynowNum: string;
+  foodHygineCert: string;
+  icNumber: string;
+}
+
+interface ActiveJobs {
+  job: string;
+  ongoingShift: string;
+  clockedIn: string;
+  employer: string;
+  duration: string;
+  clockedOut: string;
+  date: string;
+  totalWage: string;
+  wageGenerated: string;
+  rateType: string;
 }
 
 interface ProfileStats {
@@ -63,7 +87,23 @@ export default function ProfileDashboard() {
     gender: "Male",
     nric: "XXXXXX4575",
     nationality: "Singapore",
+    paynowNum: "4512-1321-2312",
     race: "Korean",
+    foodHygineCert: "112131842",
+    icNumber: "451213454",
+  };
+
+  const activeJobs: ActiveJobs = {
+    job: "Tray Collecter",
+    ongoingShift: "07:00 PM ---- 11:00 PM",
+    clockedIn: "07:06 AM",
+    employer: "Right Service PTE. LTD.",
+    duration: "4 Hrs",
+    clockedOut: " -- ",
+    date: "10 Sep, 24",
+    totalWage: " $72",
+    wageGenerated: "$--",
+    rateType: "Flat Rate",
   };
 
   const customLabels: Record<string, string> = {
@@ -73,7 +113,23 @@ export default function ProfileDashboard() {
     gender: "Gender",
     nric: "NRIC",
     nationality: "Nationality",
+    paynowNum: "Paynow Number",
     race: "Race",
+    foodHygineCert: "Food & Hygiene cert.",
+    icNumber: "IC number",
+  };
+
+  const customLablesActiveJobs: Record<string, string> = {
+    job: "Job",
+    ongoingShift: "Ongoing shift",
+    clockedIn: "Clocked In Time",
+    employer: "Employer",
+    duration: "Duration",
+    clockedOut: "Clcoked Out time ",
+    date: "Date",
+    totalWage: "Total Wage",
+    wageGenerated: "Wage Generated",
+    rateType: "Rate Type",
   };
 
   const stats: ProfileStats = {
@@ -97,11 +153,17 @@ export default function ProfileDashboard() {
       case "gender":
         return <TbGenderGenderfluid className="w-6 h-6 text-[#048BE1]" />;
       case "nric":
-        return <FaRegIdCard className="w-5 h-5 text-[#048BE1]" />; 
+        return <FaRegIdCard className="w-5 h-5 text-[#048BE1]" />;
       case "nationality":
         return <MdOutlineOutlinedFlag className="w-7 h-7 text-[#048BE1]" />;
       case "race":
         return <CiUser className="w-6 h-6 text-[#048BE1]" />;
+      case "paynowNum":
+        return <CiUser className="w-6 h-6 text-[#048BE1]" />;
+      case "foodHygineCert":
+        return <FaHandHoldingWater className="w-6 h-6 text-[#048BE1] " />;
+      case "icNumber":
+        return <TbUserHexagon className="w-6 h-6 text-[#048BE1]" />;
       default:
         return null;
     }
@@ -129,51 +191,56 @@ export default function ProfileDashboard() {
             <button onClick={toggleMenu} className="p-4 rounded-full bg-white">
               <Settings className="w-6 h-6" />
             </button>
-            
           </div>
           {isOpen && (
-        <div className="absolute right-0 mt-2 w-48 top-14 bg-white border border-gray-300 rounded-lg shadow-lg z-50">
-          <ul className="py-2">
-            {/* Edit Candidate */}
-            <li>
-              <Link to='/edit-candidate-profile'>
-              <button className="flex items-center w-full px-4 py-2 text-sm text-[#000000] hover:bg-gray-100">
-                <FiEdit3 className="w-4 h-4 mr-2 text-gray-500" />
-                Edit Candidate
-              </button>
-              </Link>
-            </li>
-            {/* Block Candidate */}
-            <li>
-              <button className="flex items-center w-full px-4 py-2 text-sm text-[#941F15] hover:bg-red-100">
-                <Ban className="w-4 h-4 mr-2 text-red-500" />
-                Block Candidate
-              </button>
-            </li>
-          </ul>
-        </div>
-      )}
+            <div className="absolute right-0 mt-2 w-48 top-14 bg-white border border-gray-300 rounded-lg shadow-lg z-50">
+              <ul className="py-2">
+                {/* Edit Candidate */}
+                <li>
+                  <Link to="/edit-candidate-profile">
+                    <button className="flex items-center w-full px-4 py-2 text-sm text-[#000000] hover:bg-gray-100">
+                      <FiEdit3 className="w-4 h-4 mr-2 text-gray-500" />
+                      Edit Candidate
+                    </button>
+                  </Link>
+                </li>
+                {/* Block Candidate */}
+                <li>
+                  <button className="flex items-center w-full px-4 py-2 text-sm text-[#941F15] hover:bg-red-100">
+                    <Ban className="w-4 h-4 mr-2 text-red-500" />
+                    Block Candidate
+                  </button>
+                </li>
+              </ul>
+            </div>
+          )}
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 -mt-20">
-        <div className="grid md:grid-cols-[320px_1fr] gap-6">
+        <div className="gap-6 flex flex-col">
           {/* Profile Card */}
-          <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-200 z-10 pt-32">
-            <div className="flex flex-col items-center -mt-20 pb-6 border-b border-[#DDDDDD]">
-              <div className="relative">
-                <img
-                  src="./assets/teamm1.svg"
-                  alt="Profile"
-                  width={100}
-                  height={100}
-                  className="rounded-full border-2 border-dotted border-black"
-                />
+          <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-200 z-10">
+            <div className="flex justify-between items-start  pb-6 border-b border-[#DDDDDD]">
+              <div className="flex items-center gap-4">
+                <div className="relative">
+                  <img
+                    src="./assets/teamm1.svg"
+                    alt="Profile"
+                    width={80}
+                    height={80}
+                    className="rounded-full border-2 border-dotted border-black"
+                  />
+                </div>
+                <div className="flex flex-col items-start gap-1">
+                  <h1 className=" text-xl font-semibold">Ethan Carter</h1>
+                  <p className="text-sm font-normal">
+                    Work pass status:{" "}
+                    <span className="text-[#049609] text-sm"> Verified</span>
+                  </p>
+                </div>
               </div>
-              <h1 className="mt-4 text-xl font-semibold">Ethan Carter</h1>
-              <span className="px-6  py-1 bg-[#CEFFCF] text-[#049609] text-sm font-normal rounded-full mt-1">
-                Verified
-              </span>
+
               <p className="text-sm text-[#4C4C4C] font-medium mt-2">
                 Registered at: 21/09/2008, 09:30AM
               </p>
@@ -183,27 +250,79 @@ export default function ProfileDashboard() {
               <h2 className="font-semibold mb-4 text-[16px] text-[#000000]">
                 Personal Details
               </h2>
-              <div className="space-y-4 mt-8">
+              <div className="space-y-4 mt-8 grid grid-cols-4">
                 {Object.entries(personalDetails).map(([key, value]) => (
-                  <div key={key} className="flex items-start gap-3 my-3">
-                    {/* Icon */}
-                    <div className="w-5 h-5 mt-0.5">{getIcon(key)}</div>
+                  <div className="flex flex-col">
+                    <div key={key} className="flex items-start gap-3 my-3">
+                      {/* Icon */}
+                      <div className="w-5 h-5 mt-0.5">{getIcon(key)}</div>
 
-                    {/* Label and Value */}
-                    <div>
-                    <p className="text-[16px] font-medium leading-[24px] text-[#048BE1]">
-              {customLabels[key] || key.replace(/([A-Z])/g, " $1").trim()}
-            </p>
+                      {/* Label and Value */}
+                      <div>
+                        <p className="text-[16px] font-medium leading-[24px] text-[#048BE1]">
+                          {customLabels[key] ||
+                            key.replace(/([A-Z])/g, " $1").trim()}
+                        </p>
+                      </div>
+                    </div>
+                    {key !== "foodHygineCert" && (
                       <p className="text-[20px] leading-[30px] font-normal text-[#000000]">
                         {value}
                       </p>
-                    </div>
+                    )}
+                    {key === "foodHygineCert" && (
+                      <div className="flex items-center gap-3 p-2 rounded-lg bg-[#FFF4E5] w-fit">
+                        <Image className="w-6 h-6" />
+                        <p className="text-[20px] leading-[30px] font-normal text-[#000000]">
+                          {value}
+                        </p>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
             </div>
           </div>
-
+          <div className=" bg-white rounded-3xl p-6 shadow-sm border border-gray-200 px-12">
+            <h2 className="font-semibold mb-4 text-[16px] text-[#000000]">
+              Active Jobs
+            </h2>
+            <div className=" mt-8 grid grid-cols-3 items-center gap-6">
+              {Object.entries(activeJobs).map(([key, value]) => (
+                <div className="flex flex-col">
+                  <div>
+                    <p className="text-[16px] font-medium leading-[24px] text-[#048BE1]">
+                      {customLablesActiveJobs[key] ||
+                        key.replace(/([A-Z])/g, " $1").trim()}
+                      :
+                    </p>
+                  </div>
+                  {key === "job" && (
+                    <p className="text-[20px] leading-[30px] font-normal text-[#000000]">
+                      {value}{" "}
+                      <span className="ml-2 text-[#049609] text-[16px] font-normal leading-[20px] py-2 px-4 bg-[#ECFFEA] rounded-full">
+                        Active
+                      </span>
+                    </p>
+                  )}
+                  {key === "date" && (
+                      <p className="text-[20px] leading-[30px] font-normal text-[#000000]">
+                        {value}
+                      </p>
+                    )}
+                  {key === "clockedOut" || key === "clockedIn" && (
+                      <div className="flex items-center gap-1 py-1 px-3 rounded-full border border-[#048BE1] w-fit">
+                        <RotateCcw className="text-white p-1 rounded-full bg-[#CDCDCD] w-7 h-7" />
+                        <p className="text-[20px] leading-[30px] font-normal text-[#000000]">
+                          {value}
+                        </p>
+                        <FiEdit3 className="text-white p-1 rounded-full bg-[#0099FF] w-7 h-7" />
+                      </div>
+                    )}
+                </div>
+              ))}
+            </div>
+          </div>
           {/* Stats Section */}
           <div className="bg-white rounded-3xl py-8 px-12 shadow-sm border border-gray-200 z-10">
             <div className="flex gap-6 py-8 border-b">
@@ -289,8 +408,12 @@ const StatItem: React.FC<StatItemProps> = ({ icon: Icon, label, value }) => (
   <div className="py-6">
     <div className="flex items-center gap-6 text-gray-600 mb-6">
       <Icon className="w-[30px] h-[30px]" color="#000000" />
-      <span className="text-[20px] leading-[24px] text-[#000000] font-medium">{label}</span>
+      <span className="text-[20px] leading-[24px] text-[#000000] font-medium">
+        {label}
+      </span>
     </div>
-    <p className="text-[36px] font-normal leading-[43px] text-[#000000]">{value}</p>
+    <p className="text-[36px] font-normal leading-[43px] text-[#000000]">
+      {value}
+    </p>
   </div>
-)
+);
