@@ -228,7 +228,7 @@ const JobTable: React.FC = () => {
                           {group.shifts.map((shift, shiftIndex) => (
                             <span
                               key={shiftIndex}
-                              className="bg-blue-100 text-blue-700 px-1 py-1 text-center rounded-full"
+                              className="bg-blue-600 text-white px-1 py-1 text-center rounded-full"
                             >
                               {shift}
                             </span>

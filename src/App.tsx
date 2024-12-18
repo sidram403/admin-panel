@@ -7,11 +7,13 @@ import EmployerDetailPage from './pages/employers/EmployerDetailPage';
 import CandidatesTable from './pages/employers/CandidatesTable';
 import JobDetailsPage from './pages/jobManagemant/JobDetailsPage';
 import CandidateProfile from './pages/jobManagemant/CandidateProfile';
+
 import ModifyShifts from './pages/jobManagemant/modifyShifts';
 import EmployerTable from './pages/employers/Employers';
 import ActiveJobPosting from './pages/employers/ActiveJobPosting';
 import HustleHeroesList from './pages/hustleHeroes/HustleHeroesList';
 import EditCandidateProfile from './pages/jobManagemant/EditCandidateProfile';
+
 
 function App() {
   return (
@@ -36,6 +38,10 @@ function App() {
           <Route path="employers" element={<EmployerTable/>} />
           <Route path="active-job-posting" element={<ActiveJobPosting/>} />
           <Route path="hustle-heroes" element={<HustleHeroesList/>} />
+
+
+{/* Payments */}
+          <Route path="employee-payments" element={<EmployeePayments/>} />
 
 
 

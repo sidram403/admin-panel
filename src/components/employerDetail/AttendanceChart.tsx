@@ -1,4 +1,5 @@
 import React from "react";
+import { FaChevronDown } from "react-icons/fa";
 import {
   AreaChart,
   Area,
@@ -8,6 +9,13 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+
+const startYear = 2000; // Starting year
+const endYear = new Date().getFullYear(); // Current year
+const years = Array.from(
+  { length: endYear - startYear + 1 },
+  (_, i) => startYear + i
+);
 
 const data = [
   { name: "Jan", uv: 4000 },
@@ -27,7 +35,24 @@ const data = [
 const AttendanceChart: React.FC = () => {
   return (
     <div className="w-full">
-      <h3 className="font-medium text-gray-600">Average Attendance: 80%</h3>
+      <div className="flex justify-between">
+        <h3 className="font-medium text-gray-600">Average Attendance: 80%</h3>
+
+        <div className="relative w-36">
+          <select
+            id="year"
+            className="w-full appearance-none text-black bg-gray-300 border-gray-300 rounded-full px-6 py-2 pr-10"
+          >
+            <option value="">{endYear}</option>
+            {years.map((year) => (
+              <option key={year} value={year}>
+                {year}
+              </option>
+            ))}
+          </select>
+          <FaChevronDown className="absolute top-1/2 right-4 transform -translate-y-1/2 text-gray-500 pointer-events-none" />
+        </div>
+      </div>
       <div className="mt-4 w-full">
         <div className=" h-96 rounded">
           <ResponsiveContainer width="100%" height="100%">
@@ -60,7 +85,6 @@ const AttendanceChart: React.FC = () => {
           </ResponsiveContainer>
         </div>
       </div>
-    
     </div>
   );
 };
