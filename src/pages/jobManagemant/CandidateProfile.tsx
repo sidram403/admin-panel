@@ -233,24 +233,24 @@ export default function ProfileDashboard() {
                   />
                 </div>
                 <div className="flex flex-col items-start gap-1">
-                  <h1 className=" text-xl font-semibold">Ethan Carter</h1>
-                  <p className="text-sm font-normal">
+                  <h1 className=" text-[24px] leading-[30px] font-medium">Ethan Carter</h1>
+                  <p className="text-[16px] leading-[24px] font-medium text-[#4c4c4c]">
                     Work pass status:{" "}
-                    <span className="text-[#049609] text-sm"> Verified</span>
+                    <span className="text-[#049609] text-[16px] leading-[24px] font-medium ml-2"> Verified</span>
                   </p>
                 </div>
               </div>
 
               <p className="text-sm text-[#4C4C4C] font-medium mt-2">
-                Registered at: 21/09/2008, 09:30AM
+                <p className="text-[16px] leading-[24px] font-medium text-[#4c4c4c]">Registered at: <span className="text-[#000000] text-[16px] leading-[24px] font-medium ml-2">21/09/2008, 09:30AM</span></p> 
               </p>
             </div>
 
             <div className="mt-6">
-              <h2 className="font-semibold mb-4 text-[16px] text-[#000000]">
+              <h2 className="font-semibold mb-4 text-[16px] leading-[24px] text-[#000000]">
                 Personal Details
               </h2>
-              <div className="space-y-4 mt-8 grid grid-cols-4">
+              <div className=" mt-8 grid grid-cols-4 gap-6">
                 {Object.entries(personalDetails).map(([key, value]) => (
                   <div className="flex flex-col">
                     <div key={key} className="flex items-start gap-3 my-3">
@@ -266,14 +266,14 @@ export default function ProfileDashboard() {
                       </div>
                     </div>
                     {key !== "foodHygineCert" && (
-                      <p className="text-[20px] leading-[30px] font-normal text-[#000000]">
+                      <p className="text-[16px] leading-[24px] font-normal text-[#000000]">
                         {value}
                       </p>
                     )}
                     {key === "foodHygineCert" && (
                       <div className="flex items-center gap-3 p-2 rounded-lg bg-[#FFF4E5] w-fit">
                         <Image className="w-6 h-6" />
-                        <p className="text-[20px] leading-[30px] font-normal text-[#000000]">
+                        <p className="text-[16px] leading-[24px] font-normal text-[#000000]">
                           {value}
                         </p>
                       </div>
@@ -291,33 +291,44 @@ export default function ProfileDashboard() {
               {Object.entries(activeJobs).map(([key, value]) => (
                 <div className="flex flex-col">
                   <div>
-                    <p className="text-[16px] font-medium leading-[24px] text-[#048BE1]">
+                    <p className="text-[16px] font-medium leading-[20px] text-[#0099ff]">
                       {customLablesActiveJobs[key] ||
                         key.replace(/([A-Z])/g, " $1").trim()}
                       :
                     </p>
                   </div>
                   {key === "job" && (
-                    <p className="text-[20px] leading-[30px] font-normal text-[#000000]">
+                    <p className="text-[16px] leading-[24px] font-medium text-[#000000]">
                       {value}{" "}
-                      <span className="ml-2 text-[#049609] text-[16px] font-normal leading-[20px] py-2 px-4 bg-[#ECFFEA] rounded-full">
+                      <span className="ml-1 text-[#049609] text-[16px] font-normal leading-[20px] py-2 px-4 bg-[#ECFFEA] rounded-full">
                         Active
                       </span>
                     </p>
                   )}
-                  {key === "date" && (
-                      <p className="text-[20px] leading-[30px] font-normal text-[#000000]">
+                  {key !== "job" && key !== "clockedOut" && key !== "clockedIn" && key!=="wageGenerated" && key!=="totalWage" && (
+                      <p className="text-[16px] leading-[24px] font-medium text-[#000000]">
                         {value}
                       </p>
                     )}
-                  {key === "clockedOut" || key === "clockedIn" && (
+                  {(key === "clockedOut" || key === "clockedIn") && (
                       <div className="flex items-center gap-1 py-1 px-3 rounded-full border border-[#048BE1] w-fit">
                         <RotateCcw className="text-white p-1 rounded-full bg-[#CDCDCD] w-7 h-7" />
-                        <p className="text-[20px] leading-[30px] font-normal text-[#000000]">
+                        <p className="text-[16px] leading-[24px] font-medium text-[#000000] w-[70px] text-center">
                           {value}
                         </p>
                         <FiEdit3 className="text-white p-1 rounded-full bg-[#0099FF] w-7 h-7" />
                       </div>
+                    )}
+                    {(key==="wageGenerated" || key==="totalWage") && (
+                      <>
+                      <p className="text-[16px] leading-[24px] font-medium text-[#000000]">
+                        {value}
+                      </p>
+                      <p className="text-[14px] leading-[17px] font-normal text-[#4c4c4c]">
+                       1 Hrs (Unpaid Break)
+                     </p>
+                      </>
+                      
                     )}
                 </div>
               ))}
@@ -332,7 +343,7 @@ export default function ProfileDashboard() {
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)} // Set the active tab on click
-                    className={`px-[42px] py-[18px] flex items-center gap-4 rounded-[10px] text-xl font-medium 
+                    className={`px-[38px] py-[18px] flex items-center gap-4 rounded-[10px] text-[16px] leading-[20px] font-medium 
               ${
                 activeTab === tab.id
                   ? "bg-[#048BE1] text-white " // Active styles

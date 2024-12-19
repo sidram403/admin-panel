@@ -13,6 +13,7 @@ import EmployerTable from './pages/employers/Employers';
 import ActiveJobPosting from './pages/employers/ActiveJobPosting';
 import HustleHeroesList from './pages/hustleHeroes/HustleHeroesList';
 import EditCandidateProfile from './pages/jobManagemant/EditCandidateProfile';
+import EmployeePayments from './pages/payments/EmployeePayments';
 
 
 function App() {
